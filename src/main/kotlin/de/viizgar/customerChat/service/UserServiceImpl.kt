@@ -3,6 +3,7 @@ package de.viizgar.customerChat.service
 import de.viizgar.customerChat.domain.User
 import de.viizgar.customerChat.repository.UserRepository
 import org.springframework.stereotype.Service
+import kotlin.jvm.optionals.getOrNull
 
 @Service
 class UserServiceImpl(val userRepository: UserRepository) : UserService {
@@ -20,7 +21,11 @@ class UserServiceImpl(val userRepository: UserRepository) : UserService {
     }
 
 
-    override fun get(id: Long): User {
-        return userRepository.findById(id).get()
+    override fun get(id: Long): User? {
+        return userRepository.findById(id).getOrNull()
+    }
+
+    override fun getAll(): List<User> {
+        return userRepository.findAll().toList()
     }
 }

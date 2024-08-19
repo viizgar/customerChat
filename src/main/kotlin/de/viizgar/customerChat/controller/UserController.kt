@@ -23,4 +23,9 @@ class UserController {
         return userService.delete(id)
     }
 
+    @GetMapping("/")
+    fun getAll(): List<User> {
+        return userService.getAll()
+    }
+
 }

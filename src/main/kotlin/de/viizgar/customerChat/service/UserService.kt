@@ -25,5 +25,10 @@ interface UserService {
     /**
      * It returns a user by id
      */
-    fun get(id: Long): User
+    fun get(id: Long): User?
+
+    /**
+     * It returns all users
+     */
+    fun getAll(): List<User>
 }

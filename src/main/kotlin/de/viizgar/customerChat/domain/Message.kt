@@ -10,10 +10,10 @@ data class Message(
     val id: Long = 0,
     @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    val sender: User = User(),
-    val content: String = "",
+    var sender: User = User(),
+    var content: String = "",
     val timestamp: LocalDateTime = LocalDateTime.now(),
     @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "chatsession_id", referencedColumnName = "id")
-    val session: ChatSession = ChatSession(),
+    var session: ChatSession = ChatSession(),
 )
