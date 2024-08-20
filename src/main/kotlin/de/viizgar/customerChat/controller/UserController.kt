@@ -13,7 +13,7 @@ class UserController {
     @Autowired
     private lateinit var userService: UserService
 
-    @PostMapping("/")
+    @PostMapping("")
     fun create(@RequestBody user: User): User {
         return userService.create(user)
     }
@@ -23,7 +23,7 @@ class UserController {
         return userService.delete(id)
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     fun getAll(): List<User> {
         return userService.getAll()
     }

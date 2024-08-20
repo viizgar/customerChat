@@ -2,18 +2,19 @@ package de.viizgar.customerChat.domain
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
+import kotlin.random.Random
 
 @Entity
-data class Message(
+class Message(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
-    @OneToOne(cascade = [CascadeType.ALL])
+    val id: Long = Random.nextLong(until = 1_099_511_627_776),
+    @ManyToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     var sender: User = User(),
     var content: String = "",
     val timestamp: LocalDateTime = LocalDateTime.now(),
-    @OneToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chatsession_id", referencedColumnName = "id")
     var session: ChatSession = ChatSession(),
 )

@@ -14,8 +14,11 @@ class ChatSession(
     @JoinColumn(name = "agent_id", referencedColumnName = "id")
     var agent: User = User(),
 
-    @OneToMany(cascade = [CascadeType.REMOVE])
-    @JoinColumn(name = "message_id", referencedColumnName = "id")
+    @OneToMany(
+        mappedBy = "session",
+        cascade = [CascadeType.ALL],
+        orphanRemoval = true
+    )
     var messages: List<Message> = emptyList()
 
 )

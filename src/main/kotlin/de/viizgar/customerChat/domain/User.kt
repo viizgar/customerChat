@@ -2,7 +2,7 @@ package de.viizgar.customerChat.domain
 
 import jakarta.persistence.*
 
-@Entity
+@Entity(name = "User")
 class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

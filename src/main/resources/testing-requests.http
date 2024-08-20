@@ -1,0 +1,71 @@
+###
+# @name Agent creation
+POST http://localhost:8080/api/user
+Content-Type: application/json
+
+{
+  "username": "agent",
+  "isAgent": true
+}
+
+###
+# @name Customer creation
+POST http://localhost:8080/api/user
+Content-Type: application/json
+
+{
+  "username": "customer",
+  "isAgent": false
+}
+
+
+###
+# @name Getting the User List
+GET http://localhost:8080/api/user
+
+###
+# @name Creating the Chat Session for customer id:2
+POST http://localhost:8080/api/chat
+CustomerId: 2
+
+
+###
+# @name Sending the first message Agent -> Customer
+POST http://localhost:8080/api/chat/1
+userId: 1
+Content-Type: application/json
+
+{
+  "message": "Hello, how can I help you today?"
+}
+
+###
+# @name Customer replies. Customer -> Agent
+POST http://localhost:8080/api/chat/1
+userId: 2
+Content-Type: application/json
+
+{
+  "message": "I have a problem with my account, I cannot log in"
+}
+
+
+###
+# @name Agent replies. Agent -> Customer
+POST http://localhost:8080/api/chat/1
+userId: 1
+Content-Type: application/json
+
+{
+  "message": "Let see what happens. Give me a minute"
+}
+
+
+###
+# @name Getting the Message List
+GET http://localhost:8080/api/chat/1/messages
+
+
+###
+# @name Delete of the chat session and its messages (cascade)
+//DELETE http://localhost:8080/api/chat/1
