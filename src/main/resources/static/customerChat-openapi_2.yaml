@@ -1,0 +1,63 @@
+openapi: "3.1.0"
+info:
+  title: "customerChat API"
+  description: "customerChat API"
+  version: "1.0.0"
+servers:
+  - url: "https://customerChat"
+paths:
+  /api/user:
+    post:
+      summary: "POST api/user"
+      operationId: "create"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/User"
+    get:
+      summary: "GET api/user"
+      operationId: "getAll"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/User"
+  /api/user/{id}:
+    delete:
+      summary: "DELETE api/user/{id}"
+      operationId: "delete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+components:
+  schemas:
+    User:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        username:
+          type: "string"
+      required:
+        - "username"
