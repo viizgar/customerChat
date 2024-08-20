@@ -18,6 +18,9 @@ Details can be found in the OpenAPI documentation:
 - [customerChat-chat-openapi.yaml](src/main/resources/static/customerChat-openapi_1.yaml)
 - [customerChat-user-openapi.yaml](src/main/resources/static/customerChat-openapi_2.yaml)
 
+To test a basic use case check the following http
+file: [testing-requests.http](src/main/resources/testing-requests.http)
+
 ## Possible future extensions
 
 The project implementation only deals with the most basic functionalities of a customer chat software.
