@@ -18,6 +18,15 @@ Content-Type: application/json
   "isAgent": false
 }
 
+###
+# @name Customer creation (nr 2)
+POST http://localhost:8080/api/user
+Content-Type: application/json
+
+{
+  "username": "Second customer",
+  "isAgent": false
+}
 
 ###
 # @name Getting the User List
@@ -28,6 +37,10 @@ GET http://localhost:8080/api/user
 POST http://localhost:8080/api/chat
 CustomerId: 2
 
+###
+# @name Creating the Chat Session for customer id:2
+POST http://localhost:8080/api/chat
+CustomerId: 3
 
 ###
 # @name Sending the first message Agent -> Customer

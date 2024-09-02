@@ -29,7 +29,7 @@ class ChatServiceImpl(
         } else {
             throw ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
-                "Costumer or Agent not found. Without them a chhat cannot be started"
+                "Costumer or Agent not found. Without them a chat cannot be started"
             )
         }
     }
