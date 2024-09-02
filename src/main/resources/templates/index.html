@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Chat Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script src="/js/index.js"></script>
+    <link href="/css/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="app"
+     th:attr="data-user-role=${userRole},
+     data-sender-username=${senderUsername},
+     data-sender-id=${senderId},
+     data-receiver-username=${receiverUsername},
+     data-chat-id=${chatId}"
+>
+    <h1>Customer CHAT</h1>
+    <h2>Hello, <span
+            th:text=" 'Welcome ' + ${userRole} + ' ' + ${senderUsername} +' '+ 'to your chat with '+ ${receiverUsername}+', Your chat reference is: (chatId: '+ ${chatId}+')'">User not found on this chat :(, this shouldn't happen</span>!
+    </h2>
+    <input id="messageInput" placeholder="Type a message" type="text">
+    <button id="messageBtn" onclick="sendMessage()">Send</button>
+    <div id="response">
+    </div>
+</div>
+</body>
+</html>

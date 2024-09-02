@@ -2,7 +2,8 @@ package de.viizgar.customerChat.controller
 
 import de.viizgar.customerChat.domain.Message
 import de.viizgar.customerChat.dto.ChatSessionDTO
-import de.viizgar.customerChat.dto.MessageDTO
+import de.viizgar.customerChat.dto.MessageRequestDTO
+import de.viizgar.customerChat.dto.MessageResponseDTO
 import de.viizgar.customerChat.service.ChatService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -20,13 +21,13 @@ class ChatController {
     fun appendMessage(
         @RequestHeader(value = "userId", required = true) userId: Long,
         @PathVariable id: Long,
-        @RequestBody message: String
-    ): MessageDTO {
+        @RequestBody message: MessageRequestDTO
+    ): MessageResponseDTO {
         val chatSession = chatService.getChatSession(id)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No session found for id $id")
 
-        val messageObj = chatService.appendMessage(chatSession, userId, message)
-        return MessageDTO(
+        val messageObj = chatService.appendMessage(chatSession, userId, message.message)
+        return MessageResponseDTO(
             username = messageObj.sender.username,
             timestamp = messageObj.timestamp,
             content = messageObj.content
@@ -49,12 +50,12 @@ class ChatController {
     }
 
     @GetMapping("/{id}/messages")
-    fun getMessages(@PathVariable id: Long): List<MessageDTO> {
+    fun getMessages(@PathVariable id: Long): List<MessageResponseDTO> {
         val chatSession = chatService.getChatSession(id)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "No session found for id $id")
 
         return chatSession.messages.map { message: Message ->
-            MessageDTO(
+            MessageResponseDTO(
                 content = message.content,
                 timestamp = message.timestamp,
                 username = message.sender.username

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Error - [[${status}]]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-code {
+            font-size: 100px;
+            color: #e74c3c;
+            margin: 0;
+        }
+
+        .error-message {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .error-description {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="error-code">[[${status}]]</div>
+    <div class="error-message">[[${error}]]</div>
+    <div class="error-description">
+        [[${message}]]<br>
+        <a href="/web?chatId=1&userId=1">Go back to the homepage</a>
+    </div>
+</div>
+</body>
+</html>

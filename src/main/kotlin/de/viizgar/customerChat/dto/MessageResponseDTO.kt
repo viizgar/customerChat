@@ -2,7 +2,7 @@ package de.viizgar.customerChat.dto
 
 import java.time.LocalDateTime
 
-class MessageDTO(
+class MessageResponseDTO(
     val username: String,
     val timestamp: LocalDateTime,
     val content: String
